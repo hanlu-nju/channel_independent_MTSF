@@ -34,7 +34,6 @@ def main():
     parser.add_argument('--model', type=str, default='Linear',
                         help='model name')
 
-    parser.add_argument('--modes', type=int, default=64, help='modes to be selected random 64')
     parser.add_argument('--L', type=int, default=3, help='ignore level')
     parser.add_argument('--base', type=str, default='legendre', help='mwt base')
     parser.add_argument('--cross_activation', type=str, default='tanh',
@@ -147,11 +146,9 @@ def main():
         from exp.exp_main import Exp_Main
         Exp = Exp_Main
     if args.is_training:
-        setting = '{}_{}_{}_modes{}_{}_ft{}_sl{}_ll{}_pl{}_dm{}_nh{}_el{}_dl{}_df{}_fc{}_eb{}_dt{}_{}'.format(
+        setting = '{}_{}_{}_ft{}_sl{}_ll{}_pl{}_dm{}_nh{}_el{}_dl{}_df{}_fc{}_eb{}_dt{}_{}'.format(
             args.task_id,
             args.model,
-            args.mode_select,
-            args.modes,
             args.data,
             args.features,
             args.seq_len,

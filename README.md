@@ -13,6 +13,14 @@ Multivariate time series data comprises various channels of variables. The multi
 
 ## Prerequisites
 
+matplotlib==3.5.1
+numpy==1.23.4
+pandas==1.2.3
+torch==1.11.0
+tqdm==4.62.3
+xgboost==1.7.4
+
+
 ## Datasets
 
 We refer to [this repository](https://github.com/thuml/Autoformer#get-started) for downloading datasets.

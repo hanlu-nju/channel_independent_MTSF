@@ -13,7 +13,6 @@ class Model(nn.Module):
     def __init__(self, configs):
         super(Model, self).__init__()
         self.version = configs.version
-        self.mode_select = configs.mode_select
         self.modes = configs.modes
         self.seq_len = configs.seq_len
         self.label_len = configs.label_len

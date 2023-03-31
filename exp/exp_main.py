@@ -1,19 +1,18 @@
 import os
 import time
 import warnings
+
 import numpy as np
 import torch
 import torch.nn as nn
 from torch import optim
+from tqdm import tqdm
+
 from data_provider.data_factory import data_provider
 from exp.exp_basic import Exp_Basic
 from models import Informer, Transformer, DeepVAR, NHITS, DLinear, NLinear, Linear, TCN, MLP
-from utils.tools import EarlyStopping, adjust_learning_rate, visual
 from utils.metrics import metric
-# import wandb
-from tqdm import tqdm
-import matplotlib.pyplot as plt
-from torch.nn import functional as F
+from utils.tools import EarlyStopping, adjust_learning_rate
 
 warnings.filterwarnings('ignore')
 
