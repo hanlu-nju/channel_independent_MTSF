@@ -1,5 +1,23 @@
 # The Capacity and Robustness Trade-off: Two Strategies for Long-Term Multivariate Time Series Forecasting
 
+The code repository for "[The Capacity and Robustness Trade-off: Two Strategies for Long-Term Multivariate Time Series Forecasting](https://arxiv.org/abs/2304.05206)" in PyTorch. If you use any content of this repo for your work, please cite the following bib entry:
+
+```
+@article{han2023capacity,
+  author       = {Lu Han and
+                  Han{-}Jia Ye and
+                  De{-}Chuan Zhan},
+  title        = {The Capacity and Robustness Trade-off: Revisiting the Channel Independent
+                  Strategy for Multivariate Time Series Forecasting},
+  journal      = {CoRR},
+  volume       = {abs/2304.05206},
+  year         = {2023}
+}
+```
+
+
+## Abstract
+
 Multivariate time series data comprises various channels of variables. The multivariate forecasting models need to capture the relationship between the channels to accurately predict future values. However, recently, there has been an emergence of methods that employ the Channel Independent (CI) strategy. These methods view multivariate time series data as separate univariate time series and disregard the correlation between channels. Surprisingly, our empirical results have shown that models trained with the CI strategy outperform those trained with the Channel Dependent (CD) strategy, usually by a significant margin. Nevertheless, the reasons behind this phenomenon have not yet been thoroughly explored in the literature. This paper provides comprehensive empirical and theoretical analyses of the characteristics of multivariate time series datasets and the CI/CD strategy. Our results conclude that the CD approach has higher capacity but often lacks robustness to accurately predict distributionally drifted time series. In contrast, the CI approach trades capacity for robust prediction. Practical measures inspired by these analyses are proposed to address the capacity and robustness dilemma, including a modified CD method called Predict Residuals with Regularization (PRReg) that can surpass the CI strategy. We hope our findings can raise awareness among researchers about the characteristics of multivariate time series and inspire the construction of better forecasting models.
 
 **The Channel Dependent (CD) and Channel Independent (CI) Strategy**:
