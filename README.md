@@ -1,6 +1,6 @@
-# The Capacity and Robustness Trade-off: Two Strategies for Multivariate Time Series Forecasting
+# The Capacity and Robustness Trade-off: Revisiting the Channel Independent Strategy for Multivariate Time Series Forecasting
 
-The code repository for "[The Capacity and Robustness Trade-off: Two Strategies for Multivariate Time Series Forecasting](https://arxiv.org/abs/2304.05206)" in PyTorch. If you use any content of this repo for your work, please cite the following bib entry:
+The code repository for "[The Capacity and Robustness Trade-off: Revisiting the Channel Independent Strategy for Multivariate Time Series Forecasting](https://arxiv.org/abs/2304.05206)" in PyTorch. If you use any content of this repo for your work, please cite the following bib entry:
 
 ```
 @article{han2023capacity,
