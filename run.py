@@ -87,23 +87,17 @@ def main():
     parser.add_argument('--activation', type=str, default='gelu', help='activation')
     parser.add_argument('--output_attention', action='store_true', help='whether to output attention in ecoder')
     parser.add_argument('--do_predict', action='store_true', help='whether to predict unseen future data')
-    # masked model
-    parser.add_argument('--mask_ratio', type=float, default=0.0, help='whether to flat the features as a vector')
-    # DLinear
-    parser.add_argument('--lamb', type=float, default=0.0,
-                        help='DLinear: a linear layer for each variate(channel) individually')
+    parser.add_argument('--lamb', type=float, default=0.0)
     parser.add_argument('--individual', action='store_true', default=False,
-                        help='DLinear: a linear layer for each variate(channel) individually')
+                        help='A linear layer for each variate(channel) individually')
     parser.add_argument('--pred_residual', action='store_true', default=False,
-                        help='DLinear: a linear layer for each variate(channel) individually')
+                        help='Use PRREG strategy to train the model')
     parser.add_argument('--flat_input', action='store_true', default=False,
-                        help='DLinear: a linear layer for each variate(channel) individually')
+                        help='flat the input variables in linear model. It is the CD strategy for Linear model.')
     parser.add_argument('--low_rank', action='store_true', default=False,
-                        help='DLinear: a linear layer for each variate(channel) individually')
-    # parser.add_argument('--rank', type=int, default=64,
-    #                     help='DLinear: a linear layer for each variate(channel) individually')
+                        help='low rank for linear layer for Linear model or Transformer layers')
     parser.add_argument('--rank_ratio', type=int, default=2,
-                        help='DLinear: a linear layer for each variate(channel) individually')
+                        help='Rank reduction ratio for low rank model')
     # optimization
     parser.add_argument('--max_iter', type=int, default=1000, help='max iteration per epoch')
     parser.add_argument('--num_workers', type=int, default=10, help='data loader num workers')
