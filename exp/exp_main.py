@@ -10,7 +10,7 @@ from tqdm import tqdm
 
 from data_provider.data_factory import data_provider
 from exp.exp_basic import Exp_Basic
-from models import Informer, Transformer, DeepVAR, NHITS, DLinear, NLinear, Linear, TCN, MLP
+from models import Informer, Transformer, DeepVAR, DLinear, NLinear, Linear, TCN, MLP
 from utils.metrics import metric
 from utils.tools import EarlyStopping, adjust_learning_rate
 
@@ -26,7 +26,6 @@ class Exp_Main(Exp_Basic):
             'Transformer': Transformer,
             'Informer': Informer,
             'DeepVAR': DeepVAR,
-            'NHITS': NHITS,
             'DLinear': DLinear,
             'NLinear': NLinear,
             'Linear': Linear,
@@ -66,25 +65,14 @@ class Exp_Main(Exp_Basic):
                 batch_y = batch_y.float()
                 if self.args.pred_residual:
                     seq_last = batch_x[:, -1:, :].detach()
-                    # batch_x = batch_x - seq_last
+                    batch_x = batch_x - seq_last
                 batch_x_mark = batch_x_mark.float().to(self.device)
                 batch_y_mark = batch_y_mark.float().to(self.device)
 
                 # decoder input
                 dec_inp = torch.zeros_like(batch_y[:, -self.args.pred_len:, :]).float()
                 dec_inp = torch.cat([batch_y[:, :self.args.label_len, :], dec_inp], dim=1).float().to(self.device)
-                # if self.args.channel_independent:`
-                #     b, l, c = batch_x.shape
-                #     batch_x = batch_x.permute(0, 2, 1).reshape(-1, batch_x.size(1), 1)
-                #     # (b,)
-                #     batch_x_mark = batch_x_mark.view(1, *batch_x_mark.shape) \
-                #         .repeat(c, 1, 1, 1) \
-                #         .view(-1, batch_x_mark.size(-2), batch_x_mark.size(-1))
-                #     dec_inp = dec_inp.permute(0, 2, 1).reshape(-1, dec_inp.size(1), 1)
-                #     batch_y_mark = batch_y_mark.view(1, *batch_y_mark.shape) \
-                #         .repeat(c, 1, 1, 1) \
-                #         .view(-1, batch_y_mark.size(-2), batch_y_mark.size(-1))
-                # encoder - decoder
+
                 if self.args.use_amp:
                     with torch.cuda.amp.autocast():
                         if self.args.output_attention:
@@ -96,8 +84,6 @@ class Exp_Main(Exp_Basic):
                         outputs = self.model(batch_x, batch_x_mark, dec_inp, batch_y_mark)[0]
                     else:
                         outputs = self.model(batch_x, batch_x_mark, dec_inp, batch_y_mark)
-                # if self.args.channel_independent:
-                #     outputs = outputs.reshape(b, c, -1).permute(0, 2, 1)
                 f_dim = -1 if self.args.features == 'MS' else 0
                 batch_y = batch_y[:, -self.args.pred_len:, f_dim:].to(self.device)
                 outputs = outputs[:, -self.args.pred_len:, f_dim:]
@@ -148,25 +134,16 @@ class Exp_Main(Exp_Basic):
                 batch_x = batch_x.float().to(self.device)
                 if self.args.pred_residual:
                     seq_last = batch_x[:, -1:, :].detach()
-                    # batch_x = batch_x - seq_last
+                    batch_x = batch_x - seq_last
 
                 batch_y = batch_y.float().to(self.device)
                 batch_x_mark = batch_x_mark.float().to(self.device)
                 batch_y_mark = batch_y_mark.float().to(self.device)
-                # mask = torch.ones((batch_x.size(0), self.args.label_len, batch_x.size(2)), device=self.device)
-                # if self.args.mask_ratio > 0:
-                #     select_idx = torch.from_numpy(
-                #         np.random.choice(self.args.label_len, size=int(self.args.mask_ratio * self.args.label_len),
-                #                          replace=False)).to(
-                #         self.device)
-                #     mask[:, select_idx, :] = 0.0
-                # batch_x[:, -self.args.label_len:, :] = batch_x[:, -self.args.label_len:, :] * mask
+                # decoder input
                 dec_inp = torch.zeros_like(batch_y[:, -self.args.pred_len:, :]).float()
                 dec_inp = torch.cat([batch_y[:, :self.args.label_len, :], dec_inp], dim=1).float().to(
                     self.device)
-                # decoder input
-                # dec_inp = torch.zeros_like(batch_y[:, -self.args.pred_len:, :]).float()
-                # dec_inp = torch.cat([batch_y[:, :self.args.label_len, :], dec_inp], dim=1).float().to(self.device)
+
 
                 # encoder - decoder
                 if self.args.use_amp:
@@ -187,14 +164,7 @@ class Exp_Main(Exp_Basic):
                         outputs = self.model(batch_x, batch_x_mark, dec_inp, batch_y_mark)
 
                 f_dim = -1 if self.args.features == 'MS' else 0
-                # if self.args.mask_ratio > 0:
-                #     label_selected_idx = torch.cat([select_idx,
-                #                                     torch.arange(self.args.label_len,
-                #                                                  self.args.label_len + self.args.pred_len,
-                #                                                  device=self.device)])
-                #     batch_y = batch_y[:, label_selected_idx, f_dim:].to(self.device)
-                #     outputs = outputs[:, label_selected_idx, f_dim:]
-                # else:
+
                 batch_y = batch_y[:, -self.args.pred_len:, f_dim:].to(self.device)
                 outputs = outputs[:, -self.args.pred_len:, f_dim:]
                 if self.args.inverse_scale:
@@ -266,7 +236,7 @@ class Exp_Main(Exp_Basic):
                 batch_y = batch_y.float().to(self.device)
                 if self.args.pred_residual:
                     seq_last = batch_x[:, -1:, :].detach()
-                    # batch_x = batch_x - seq_last
+                    batch_x = batch_x - seq_last
                 batch_x_mark = batch_x_mark.float().to(self.device)
                 batch_y_mark = batch_y_mark.float().to(self.device)
 
@@ -293,8 +263,6 @@ class Exp_Main(Exp_Basic):
                 outputs = outputs[:, -self.args.pred_len:, f_dim:]
                 batch_y = batch_y[:, -self.args.pred_len:, f_dim:].to(self.device)
 
-                # outputs = outputs.detach().cpu().numpy()
-                # batch_y = batch_y.detach().cpu().numpy()
                 if self.args.inverse_scale or self.args.eval_rescale:
                     outputs = test_data.inverse_transform(outputs)  # outputs.detach().cpu().numpy()  # .squeeze()
                     batch_y = test_data.inverse_transform(batch_y)  # batch_y.detach().cpu().numpy()  # .squeeze()
@@ -348,6 +316,9 @@ class Exp_Main(Exp_Basic):
             for i, (batch_x, batch_y, batch_x_mark, batch_y_mark) in enumerate(pred_loader):
                 batch_x = batch_x.float().to(self.device)
                 batch_y = batch_y.float()
+                if self.args.pred_residual:
+                    seq_last = batch_x[:, -1:, :].detach()
+                    batch_x = batch_x - seq_last
                 batch_x_mark = batch_x_mark.float().to(self.device)
                 batch_y_mark = batch_y_mark.float().to(self.device)
 
@@ -366,6 +337,8 @@ class Exp_Main(Exp_Basic):
                         outputs = self.model(batch_x, batch_x_mark, dec_inp, batch_y_mark)[0]
                     else:
                         outputs = self.model(batch_x, batch_x_mark, dec_inp, batch_y_mark)
+                if self.args.pred_residual:
+                    outputs = outputs + seq_last
                 pred = outputs.detach().cpu().numpy()  # .squeeze()
                 preds.append(pred)
 
