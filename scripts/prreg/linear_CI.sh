@@ -105,39 +105,6 @@ for wd in 1e-6 1e-5 1e-4 1e-3 1e-2 0.1 1.0; do
       --pred_residual \
       --batch_size 32
 
-    #    python -u run.py \
-    #      --is_training 1 \
-    #      --data_path traffic.csv \
-    #      --task_id traffic_$seq_len'_'$pred_len \
-    #      --model $model_name \
-    #      --data custom \
-    #      --features M \
-    #      --seq_len $seq_len \
-    #      --pred_len $pred_len \
-    #      --enc_in 862 \
-    #      --des 'low rank experiment' \
-    #      --tags weight_decay \
-#    --flat_input
-    #      --wd $wd \
-#    --pred_residual
-    #      --learning_rate 0.05
-    #
-    #    python -u run.py \
-    #      --is_training 1 \
-    #      --data_path electricity.csv \
-    #      --task_id Electricity_$seq_len'_'$pred_len \
-    #      --model $model_name \
-    #      --data custom \
-    #      --features M \
-    #      --seq_len $seq_len \
-    #      --pred_len $pred_len \
-    #      --enc_in 321 \
-    #      --des 'low rank experiment' \
-    #      --tags weight_decay \
-#    --flat_input
-    #      --wd $wd \
-#    --pred_residual
-    #      --learning_rate 0.001
   done
 
   for pred_len in 24 36; do
