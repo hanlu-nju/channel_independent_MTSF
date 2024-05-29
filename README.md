@@ -3,15 +3,12 @@
 The code repository for "[The Capacity and Robustness Trade-off: Revisiting the Channel Independent Strategy for Multivariate Time Series Forecasting](https://arxiv.org/abs/2304.05206)" in PyTorch. If you use any content of this repo for your work, please cite the following bib entry:
 
 ```
-@article{han2023capacity,
-  author       = {Lu Han and
-                  Han{-}Jia Ye and
-                  De{-}Chuan Zhan},
-  title        = {The Capacity and Robustness Trade-off: Revisiting the Channel Independent
-                  Strategy for Multivariate Time Series Forecasting},
-  journal      = {CoRR},
-  volume       = {abs/2304.05206},
-  year         = {2023}
+@article{han2024capacity,
+  title={The capacity and robustness trade-off: Revisiting the channel independent strategy for multivariate time series forecasting},
+  author={Han, Lu and Ye, Han-Jia and Zhan, De-Chuan},
+  journal={IEEE Transactions on Knowledge and Data Engineering},
+  year={2024},
+  publisher={IEEE}
 }
 ```
 

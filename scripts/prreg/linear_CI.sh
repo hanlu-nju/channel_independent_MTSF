@@ -13,7 +13,7 @@ for wd in 1e-6 1e-5 1e-4 1e-3 1e-2 0.1 1.0; do
       --seq_len $seq_len \
       --pred_len $pred_len \
       --enc_in 7 \
-      --des 'PRREG experiemnts' \
+      --des 'low rank experiment' \
       --tags weight_decay \
       --flat_input \
       --wd $wd \
@@ -30,7 +30,7 @@ for wd in 1e-6 1e-5 1e-4 1e-3 1e-2 0.1 1.0; do
       --seq_len $seq_len \
       --pred_len $pred_len \
       --enc_in 7 \
-      --des 'PRREG experiemnts' \
+      --des 'low rank experiment' \
       --tags weight_decay \
       --flat_input \
       --wd $wd \
@@ -47,7 +47,7 @@ for wd in 1e-6 1e-5 1e-4 1e-3 1e-2 0.1 1.0; do
       --seq_len $seq_len \
       --pred_len $pred_len \
       --enc_in 7 \
-      --des 'PRREG experiemnts' \
+      --des 'low rank experiment' \
       --tags weight_decay \
       --flat_input \
       --wd $wd \
@@ -64,7 +64,7 @@ for wd in 1e-6 1e-5 1e-4 1e-3 1e-2 0.1 1.0; do
       --seq_len $seq_len \
       --pred_len $pred_len \
       --enc_in 7 \
-      --des 'PRREG experiemnts' \
+      --des 'low rank experiment' \
       --tags weight_decay \
       --flat_input \
       --wd $wd \
@@ -81,7 +81,7 @@ for wd in 1e-6 1e-5 1e-4 1e-3 1e-2 0.1 1.0; do
       --seq_len $seq_len \
       --pred_len $pred_len \
       --enc_in 8 \
-      --des 'PRREG experiemnts' \
+      --des 'low rank experiment' \
       --tags weight_decay \
       --flat_input \
       --wd $wd \
@@ -98,7 +98,7 @@ for wd in 1e-6 1e-5 1e-4 1e-3 1e-2 0.1 1.0; do
       --seq_len $seq_len \
       --pred_len $pred_len \
       --enc_in 21 \
-      --des 'PRREG experiemnts' \
+      --des 'low rank experiment' \
       --tags weight_decay \
       --flat_input \
       --wd $wd \
@@ -115,7 +115,7 @@ for wd in 1e-6 1e-5 1e-4 1e-3 1e-2 0.1 1.0; do
     #      --seq_len $seq_len \
     #      --pred_len $pred_len \
     #      --enc_in 862 \
-    #      --des 'PRREG experiemnts' \
+    #      --des 'low rank experiment' \
     #      --tags weight_decay \
 #    --flat_input
     #      --wd $wd \
@@ -132,7 +132,7 @@ for wd in 1e-6 1e-5 1e-4 1e-3 1e-2 0.1 1.0; do
     #      --seq_len $seq_len \
     #      --pred_len $pred_len \
     #      --enc_in 321 \
-    #      --des 'PRREG experiemnts' \
+    #      --des 'low rank experiment' \
     #      --tags weight_decay \
 #    --flat_input
     #      --wd $wd \
@@ -152,7 +152,7 @@ for wd in 1e-6 1e-5 1e-4 1e-3 1e-2 0.1 1.0; do
       --label_len 18 \
       --pred_len $pred_len \
       --enc_in 7 \
-      --des 'PRREG experiemnts' \
+      --des 'low rank experiment' \
       --tags weight_decay \
       --flat_input \
       --wd $wd \

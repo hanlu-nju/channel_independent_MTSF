@@ -54,7 +54,6 @@ def main():
     parser.add_argument('--no_scale', dest='scale', action='store_false', default=True, help='do not use normalization')
     parser.add_argument('--inverse_scale', action='store_true', default=False, help='inverse the scale')
     parser.add_argument('--eval_rescale', action='store_true', default=False, help='inverse the scale')
-    parser.add_argument('--analyse_prediction', action='store_true', default=False, help='inverse the scale')
 
     # forecasting task
     parser.add_argument('--seq_len', type=int, default=96, help='input sequence length')
@@ -74,7 +73,7 @@ def main():
     parser.add_argument('--d_ff', type=int, default=2048, help='dimension of fcn')
     parser.add_argument('--moving_avg', default=[24], help='window size of moving average')
     parser.add_argument('--factor', type=int, default=1, help='attn factor')
-    parser.add_argument('--wavelet', type=int, default=0, help='attn factor')
+    parser.add_argument('--wavelet', type=int, default=0, help='use wavelet')
     parser.add_argument('--distil', action='store_false',
                         help='whether to use distilling in encoder, using this argument means not using distilling',
                         default=True)

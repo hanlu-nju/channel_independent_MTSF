@@ -22,6 +22,7 @@ for wd in 1e-6 1e-5 1e-4 1e-3 1e-2 0.1 1.0; do
       --dec_in 7 \
       --c_out 7 \
       --des 'only output' \
+      --channel_independent \
       --wd $wd \
       --pred_residual \
       --d_model 512
@@ -44,6 +45,7 @@ for wd in 1e-6 1e-5 1e-4 1e-3 1e-2 0.1 1.0; do
       --dec_in 7 \
       --c_out 7 \
       --des 'only output' \
+      --channel_independent \
       --wd $wd \
       --pred_residual \
       --d_model 512
@@ -66,6 +68,7 @@ for wd in 1e-6 1e-5 1e-4 1e-3 1e-2 0.1 1.0; do
       --dec_in 7 \
       --c_out 7 \
       --des 'only output' \
+      --channel_independent \
       --wd $wd \
       --pred_residual \
       --d_model 512
@@ -88,6 +91,7 @@ for wd in 1e-6 1e-5 1e-4 1e-3 1e-2 0.1 1.0; do
       --dec_in 7 \
       --c_out 7 \
       --des 'only output' \
+      --channel_independent \
       --wd $wd \
       --pred_residual \
       --d_model 512
@@ -110,6 +114,7 @@ for wd in 1e-6 1e-5 1e-4 1e-3 1e-2 0.1 1.0; do
       --dec_in 321 \
       --c_out 321 \
       --des 'only output' \
+      --channel_independent \
       --wd $wd \
       --pred_residual
 
@@ -131,6 +136,7 @@ for wd in 1e-6 1e-5 1e-4 1e-3 1e-2 0.1 1.0; do
       --dec_in 8 \
       --c_out 8 \
       --des 'only output' \
+      --channel_independent \
       --wd $wd \
       --pred_residual
 
@@ -152,6 +158,7 @@ for wd in 1e-6 1e-5 1e-4 1e-3 1e-2 0.1 1.0; do
       --dec_in 862 \
       --c_out 862 \
       --des 'only output' \
+      --channel_independent \
       --wd $wd \
       --pred_residual
 
@@ -173,6 +180,7 @@ for wd in 1e-6 1e-5 1e-4 1e-3 1e-2 0.1 1.0; do
       --dec_in 21 \
       --c_out 21 \
       --des 'only output' \
+      --channel_independent \
       --wd $wd \
       --pred_residual
   done
@@ -196,6 +204,7 @@ for wd in 1e-6 1e-5 1e-4 1e-3 1e-2 0.1 1.0; do
       --dec_in 7 \
       --c_out 7 \
       --des 'only output' \
+      --channel_independent \
       --wd $wd \
       --pred_residual
   done
