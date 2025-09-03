@@ -72,8 +72,8 @@ class Dataset_Custom(Dataset):
             # print(self.scaler.mean_)
             # exit()
             data = self.scaler.transform(df_data.values)
-            self.mean = torch.from_numpy(self.scaler.scale_).float().to(self.device)
-            self.var = torch.from_numpy(self.scaler.var_).float().to(self.device)
+            self.std = torch.from_numpy(self.scaler.scale_).float().to(self.device)
+            self.mean = torch.from_numpy(self.scaler.mean_).float().to(self.device)
         else:
             data = df_data.values
 
@@ -138,7 +138,7 @@ class Dataset_Custom(Dataset):
     def inverse_transform(self, data):
         if self.scale:
             if self.scaler.with_std:
-                data *= self.var
+                data *= self.std
             if self.scaler.with_mean:
                 data += self.mean
         return data
@@ -222,8 +222,8 @@ class Dataset_Pred(Dataset):
         if self.scale:
             self.scaler.fit(df_data.values)
             data = self.scaler.transform(df_data.values)
-            self.mean = torch.from_numpy(self.scaler.scale_).float()
-            self.var = torch.from_numpy(self.scaler.var_).float()
+            self.mean = torch.from_numpy(self.scaler.mean_).float()
+            self.std = torch.from_numpy(self.scaler.scale_).float()
         else:
             data = df_data.values
         tmp_stamp = df_raw[['date']][border1:border2]
@@ -273,7 +273,7 @@ class Dataset_Pred(Dataset):
     def inverse_transform(self, data):
         if self.scale:
             if self.scaler.with_std:
-                data *= self.var.to(data.device)
+                data *= self.std.to(data.device)
             if self.scaler.with_mean:
                 data += self.mean.to(data.device)
         return data
